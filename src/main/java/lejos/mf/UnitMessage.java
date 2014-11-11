@@ -1,4 +1,4 @@
-package main.java;
+package lejos.mf;
 
 public class UnitMessage {
 

@@ -1,4 +1,4 @@
-package main.java;
+package lejos.mf;
 
 public interface MessageListenerInterface {
 	void receivedNewMessage(UnitMessage msg); // Will be called when there is a

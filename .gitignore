@@ -1,4 +1,6 @@
 build
+target
 *.class
 .project
 .classpath
+.settings
