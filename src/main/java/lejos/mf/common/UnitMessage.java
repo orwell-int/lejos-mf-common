@@ -1,4 +1,4 @@
-package lejos.mf;
+package lejos.mf.common;
 
 public class UnitMessage {
 
