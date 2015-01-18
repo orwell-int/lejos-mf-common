@@ -32,10 +32,8 @@ public class UnitMessage {
 
 	public static UnitMessage setEncodedMsg(byte[] msg) {
 
-		UnitMessageType msgType = (msg[1] == 0 ? UnitMessageType.Command
-				: UnitMessageType.Debug); // MessageType.values()[msg[0]]; //
-											// MessageType.class.getEnumConstants()[msg[0]];
-											// //Need better solution.
+		UnitMessageType msgType = UnitMessageType.values()[msg[1]];
+
 		byte[] payloadBytesOnly = new byte[msg.length - 4]; // 4 since this is
 															// <STX>, MegType,
 															// :, and ETX, that
