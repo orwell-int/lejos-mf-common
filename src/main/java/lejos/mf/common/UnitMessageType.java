@@ -1,5 +1,5 @@
 package lejos.mf.common;
 
 public enum UnitMessageType {
-	Command, Debug
+	Command, Debug, Stop, Touch, Rfid, UltraSound,
 }
