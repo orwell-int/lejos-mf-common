@@ -3,27 +3,28 @@ package lejos.mf.common;
 /**
  * Created by Michaël Ludmann on 27/06/16.
  */
-public class SimpleUnitMessage implements IUnitMessage {
-    private static final char UNIT_MESSAGE_SEPARATOR = ';';
-    private UnitMessageType unitMessageType;
-    private String payload;
+public class UnitMessage {
+    protected static final char UNIT_MESSAGE_SEPARATOR = ';';
+    protected UnitMessageType unitMessageType;
+    protected String payload;
 
-    @Override
+    public UnitMessage(UnitMessageType unitMessageType, String payload) {
+        this.unitMessageType = unitMessageType;
+        this.payload = payload;
+    }
+
     public UnitMessageType getMessageType() {
         return unitMessageType;
     }
 
-    @Override
     public void setMessageType(UnitMessageType type) {
         this.unitMessageType = type;
     }
 
-    @Override
     public String getPayload() {
         return payload;
     }
 
-    @Override
     public void setPayload(String payload) {
         this.payload = payload;
     }

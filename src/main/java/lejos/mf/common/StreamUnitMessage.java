@@ -1,16 +1,11 @@
 package lejos.mf.common;
 
-public class StreamUnitMessage implements IUnitMessage {
-    private static final char UNIT_MESSAGE_SEPARATOR = ';';
+public class StreamUnitMessage extends UnitMessage {
     private static byte STX = 2;
     private static byte ETX = 3;
 
-    private UnitMessageType unitMessageType;
-    private String payload;
-
-    public StreamUnitMessage(UnitMessageType msgType, String payload) {
-        unitMessageType = msgType;
-        this.payload = payload;
+    public StreamUnitMessage(UnitMessageType unitMessageType, String payload) {
+        super(unitMessageType, payload);
     }
 
     // MSG Example: <STX>0:somepayload<ETX>
@@ -48,22 +43,7 @@ public class StreamUnitMessage implements IUnitMessage {
     }
 
     @Override
-    public UnitMessageType getMessageType() {
-        return unitMessageType;
-    }
-
-    @Override
-    public void setMessageType(UnitMessageType type) {
-        unitMessageType = type;
-    }
-
-    @Override
-    public String getPayload() {
-        return payload;
-    }
-
-    @Override
-    public void setPayload(String m_payload) {
-        this.payload = m_payload;
+    public String toString() {
+        return new String(getEncodedMessage());
     }
 }
