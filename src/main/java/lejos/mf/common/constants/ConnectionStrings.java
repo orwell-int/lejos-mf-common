@@ -1,5 +1,5 @@
 package lejos.mf.common.constants;
 
-public class ConnectionStrings {
-    public static final String Ping = "ping";
+public interface ConnectionStrings {
+    String Ping = "ping";
 }
