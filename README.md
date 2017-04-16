@@ -3,4 +3,4 @@ lejos-mf-common
 ===============
 
 Common library for a message framework used to handle the communication via bluetooth between a computer and a robot running leJOS.
-It is meant to be a submodule of a project like in lejos-mf-nxt of lejos-mf-pc.
+It is meant to be a submodule of a project like in robots-ev3 or lejos-mf-nxt of lejos-mf-pc.
