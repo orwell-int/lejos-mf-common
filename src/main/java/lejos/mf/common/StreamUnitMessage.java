@@ -4,8 +4,14 @@ public class StreamUnitMessage extends UnitMessage {
     private static byte STX = 2;
     private static byte ETX = 3;
 
-    public StreamUnitMessage(UnitMessageType unitMessageType, String payload) {
+    public StreamUnitMessage(UnitMessageType unitMessageType,
+                             String payload) {
         super(unitMessageType, payload);
+    }
+
+    @Override
+    public String toString() {
+        return new String(getEncodedMessage());
     }
 
     // MSG Example: <STX>0:somepayload<ETX>
@@ -40,10 +46,5 @@ public class StreamUnitMessage extends UnitMessage {
         String payload = new String(payloadBytesOnly);
 
         return new StreamUnitMessage(msgType, payload);
-    }
-
-    @Override
-    public String toString() {
-        return new String(getEncodedMessage());
     }
 }

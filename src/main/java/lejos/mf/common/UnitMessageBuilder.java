@@ -13,7 +13,8 @@ public class UnitMessageBuilder {
         String[] splitMessage = rawUnitMessage.split(Character.toString(UnitMessage.UNIT_MESSAGE_SEPARATOR), 2);
 
         if (splitMessage.length != 2) {
-            throw new UnitMessageException("Split raw string does not have 2 parts, but has " + splitMessage.length, rawUnitMessage);
+            throw new UnitMessageException("Split raw string does not have 2 parts, but has " + splitMessage.length,
+                                           rawUnitMessage);
         }
 
         try {

@@ -8,7 +8,8 @@ public class UnitMessage {
     protected UnitMessageType unitMessageType;
     protected String payload;
 
-    public UnitMessage(UnitMessageType unitMessageType, String payload) {
+    public UnitMessage(UnitMessageType unitMessageType,
+                       String payload) {
         this.unitMessageType = unitMessageType;
         this.payload = payload;
     }
