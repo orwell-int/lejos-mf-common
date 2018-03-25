@@ -1,8 +1,5 @@
 package lejos.mf.common;
 
-/**
- * Created by Michaël Ludmann on 27/06/16.
- */
 public class UnitMessage {
     public static final char UNIT_MESSAGE_SEPARATOR = ';';
     protected UnitMessageType unitMessageType;
