@@ -16,17 +16,15 @@ public class StreamUnitMessage extends UnitMessage {
 
     // MSG Example: <STX>0:somepayload<ETX>
     public byte[] getEncodedMessage() {
-        byte[] result = new byte[4 + payload.length()];
+        byte[] result = new byte[4 + payload.length];
 
         result[0] = STX; // Start of new frame
         result[1] = (byte) unitMessageType.ordinal();
         result[2] = UNIT_MESSAGE_SEPARATOR;
 
-        for (int i = 0; i < payload.length(); i++) {
-            result[i + 3] = (byte) payload.charAt(i);
-        }
+        System.arraycopy(payload, 0, result, 3, payload.length);
 
-        result[3 + payload.length()] = ETX; // End of new frame
+        result[3 + payload.length] = ETX; // End of new frame
 
         return result;
     }
@@ -39,9 +37,7 @@ public class StreamUnitMessage extends UnitMessage {
         // <STX>, MegType,
         // :, and ETX, that
         // we remove
-        for (int i = 0; i < payloadBytesOnly.length; i++) {
-            payloadBytesOnly[i] = msg[i + 3];
-        }
+        System.arraycopy(msg, 3, payloadBytesOnly, 0, payloadBytesOnly.length);
 
         String payload = new String(payloadBytesOnly);
 

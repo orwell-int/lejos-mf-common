@@ -2,26 +2,27 @@ package lejos.mf.common;
 
 import lejos.mf.common.exception.UnitMessageException;
 
-/**
- * Created by Michaël Ludmann on 31/07/16.
- */
+import java.util.Arrays;
+import java.util.List;
+
 public class UnitMessageBuilder {
-    public static UnitMessage build(String rawUnitMessage) throws UnitMessageException {
+    public static UnitMessage build(byte[] rawUnitMessage) throws UnitMessageException {
         if (rawUnitMessage == null) {
             return null;
         }
-        String[] splitMessage = rawUnitMessage.split(Character.toString(UnitMessage.UNIT_MESSAGE_SEPARATOR), 2);
+        final List<byte[]> unitMessageBytesList = Utils.split(UnitMessage.UNIT_MESSAGE_SEPARATOR, rawUnitMessage, 2);
 
-        if (splitMessage.length != 2) {
-            throw new UnitMessageException("Split raw string does not have 2 parts, but has " + splitMessage.length,
-                                           rawUnitMessage);
+        if (unitMessageBytesList.size() != 2) {
+            throw new UnitMessageException(
+                    "Size of decoded UnitMessage is not correct: " + unitMessageBytesList.size());
         }
 
         try {
-            UnitMessageType unitMessageType = UnitMessageType.valueOf(splitMessage[0]);
-            return new UnitMessage(unitMessageType, splitMessage[1]);
+            UnitMessageType unitMessageType = UnitMessageType.valueOf(new String(unitMessageBytesList.get(0)));
+            return new UnitMessage(unitMessageType, unitMessageBytesList.get(1));
         } catch (IllegalArgumentException e) {
-            throw new UnitMessageException("UnitMessageType failed to be parsed", rawUnitMessage);
+            throw new UnitMessageException(
+                    "Bad type decoded in UnitMessage: " + Arrays.toString(unitMessageBytesList.get(0)));
         }
     }
 }
