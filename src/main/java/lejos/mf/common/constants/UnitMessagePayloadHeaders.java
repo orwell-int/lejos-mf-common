@@ -6,4 +6,5 @@ public interface UnitMessagePayloadHeaders {
     String MoveAction = "move";
     String FireAction = "fire";
     String GameState = "game";
+    String Reset = "reset";
 }
